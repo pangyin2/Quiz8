@@ -1,0 +1,30 @@
+---
+title: "simulation"
+format: pdf
+editor: visual
+---
+```{r}
+install.packages("ggplot2")
+```
+
+```{r}
+library(ggplot2)
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Function to simulate the dataset
+simulate_data <- function(n) {
+  data.frame(
+    Support = sample(c('Yes', 'No'), n, replace = TRUE, prob = c(0.5, 0.5)),
+    Age_Group = sample(c('18-24', '25-34', '35-44', '45-54', '55-64', '65+'), n, replace = TRUE),
+    Gender = sample(c('Male', 'Female', 'Other'), n, replace = TRUE),
+    Income_Group = sample(c('Low', 'Middle', 'High'), n, replace = TRUE),
+    Highest_Education = sample(c('High School', 'Bachelor', 'Master', 'PhD'), n, replace = TRUE)
+  )
+}
+
+# Generate a dataset of 1000 observations
+dataset <- simulate_data(1000)
+```
+
