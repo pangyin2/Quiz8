@@ -1,0 +1,33 @@
+---
+title: "Question7"
+format: pdf
+editor: visual
+---
+```{r}
+install.packages("lmtest")
+library(lmtest)
+
+# Set seed for reproducibility
+set.seed(123)
+
+# Simulate independent variables
+n <- 1000
+earth <- rnorm(n, mean = 50, sd = 10)
+fire <- rnorm(n, mean = 50, sd = 10)
+wind <- rnorm(n, mean = 50, sd = 10)
+water <- rnorm(n, mean = 50, sd = 10)
+
+# Simulate dependent variable 'heart' based on the independent variables with some noise
+heart <- 5 + 0.7*earth + 0.2*fire + 0.5*wind + 0.3*water + rnorm(n, mean = 0, sd = 5)
+
+# Combine variables into a data frame
+dataset <- data.frame(earth, fire, wind, water, heart)
+
+# Fit linear regression model
+model <- lm(heart ~ earth + fire + wind + water, data = dataset)
+
+# Print the summary of the model
+summary(model)
+
+```
+
